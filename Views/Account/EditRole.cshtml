@@ -1,0 +1,75 @@
+﻿@model Roamer.ViewModels.EditRoleViewModel
+
+@{
+	ViewData["Title"] = "EditRole";
+	Layout = "_LayoutDashboard";
+}
+
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-2">
+        <div class="sidebar content-box" style="display: block;">
+            <ul class="nav">
+				<li class="current"><a asp-action="Index" asp-controller="Home"><i class="glyphicon glyphicon-home"></i> Main Page</a></li>
+				<li><a asp-action="PlaceDashboard" asp-controller="Account"><i class="glyphicon glyphicon-folder-open"></i> Places</a></li>
+				<li><a asp-action="RolesList" asp-controller="Account"><i class="glyphicon glyphicon-star"></i> Roles</a></li>
+				<li><a asp-action="CreateGuide" asp-controller="Service"><i class="glyphicon glyphicon-user"></i> Guides</a></li>
+				<li><a asp-action="CreatePost" asp-controller="Service"><i class="glyphicon glyphicon-pencil"></i> Posts</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <form asp-action="EditRole">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="RoleId" class="control-label"></label>
+                <input asp-for="RoleId" readonly class="form-control" />
+                <span asp-validation-for="RoleId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleName" class="control-label"></label>
+                <input asp-for="RoleName" class="form-control" />
+                <span asp-validation-for="RoleName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="RolesList">Back to roles list</a>
+            </div>
+        </form>
+    </div>
+	<hr />
+	<div class=" col-md-4">
+		<table class="table table-bordered">
+
+			<tr>
+				<th>
+					Users in this role
+				</th>
+			</tr>
+			@if (Model.Users.Any())
+			{
+				@foreach (var user in Model.Users)
+				{
+					<tr>
+						<td> @user </td>
+					</tr>
+				}
+			}
+
+			else
+			{
+				<tr>
+					<td> No users in this role </td>
+				</tr>
+			}
+
+			
+
+		</table>
+		<a asp-action="UserRole" asp-route-id="@Model.RoleId" class="btn btn-primary"> Add or Remove Users </a>
+	</div>
+
+</div>

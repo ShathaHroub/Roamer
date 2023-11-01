@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewData["Title"] = "Chat Room";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container" style="padding-top:80px;">
+
+    <div class="row">
+
+        <div class="col-md-6">
+            <span > Enter your name : </span> <br />
+            <input type="text" id="userInput" class="form-control" /> <br />
+            <span> Enter your message : </span> <br />
+            <textarea class="form-control rounded-0" rows="10" cols="50" id="messageInput"> </textarea> <br />
+            <button type="submit" id="sendButton" class="btn btn-success">Send Message</button>
+        </div>
+
+        <div class="col-md-6">
+            <h3> Chat : </h3>
+
+            <ul id="messagesList" class="alert alert-info"></ul>
+            
+        </div>
+
+    </div>
+
+
+</div>
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>

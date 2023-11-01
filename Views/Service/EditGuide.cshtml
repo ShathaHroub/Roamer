@@ -1,0 +1,46 @@
+﻿@model Roamer.Models.Guide
+
+@{
+    ViewData["Title"] = "EditGuide";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>EditGuide</h1>
+
+<h4>Guide</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditGuide" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GuideId" class="control-label"></label>
+                <input asp-for="GuideId" readonly class="form-control" />
+                <span asp-validation-for="GuideId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuideName" class="control-label"></label>
+                <input asp-for="GuideName" class="form-control" />
+                <span asp-validation-for="GuideName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuideDescription" class="control-label"></label>
+                <input asp-for="GuideDescription" class="form-control" />
+                <span asp-validation-for="GuideDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuideUrl" class="control-label"></label>
+                <input asp-for="GuideUrl" type="file" class="form-control" />
+                <span asp-validation-for="GuideUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

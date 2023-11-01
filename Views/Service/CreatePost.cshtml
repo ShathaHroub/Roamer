@@ -1,0 +1,62 @@
+﻿@model Roamer.ViewModels.PostViewModel
+
+@{
+    ViewData["Title"] = "CreatePost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container-sm" style="padding:100px;">
+    <div class="row">
+
+        <div class="col-md-4">
+            <form asp-action="CreatePost" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="PostTitle" class="control-label"></label>
+                    <input asp-for="PostTitle" class="form-control" />
+                    <span asp-validation-for="PostTitle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PostContent" class="control-label"></label>
+                    <textarea asp-for="PostContent" class="form-control"></textarea>
+                    <span asp-validation-for="PostContent" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PostHeading" class="control-label"></label>
+                    <textarea asp-for="PostHeading" class="form-control"></textarea>
+                    <span asp-validation-for="PostHeading" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PostContent2" class="control-label"></label>
+                    <textarea asp-for="PostContent2" class="form-control"></textarea>
+                    <span asp-validation-for="PostContent2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PostHeading2" class="control-label"></label>
+                    <textarea asp-for="PostHeading2" class="form-control"></textarea>
+                    <span asp-validation-for="PostHeading2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PostContent3" class="control-label"></label>
+                    <textarea asp-for="PostContent3" class="form-control"></textarea>
+                    <span asp-validation-for="PostContent3" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PostImagePath" class="control-label"></label>
+                    <input asp-for="PostImagePath" id="file" type="file" class="form-control" />
+                    <span asp-validation-for="PostImagePath" class="text-danger"></span>
+
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="CreatePost" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+

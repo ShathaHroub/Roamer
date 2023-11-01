@@ -1,0 +1,39 @@
+﻿@model Roamer.Models.Place
+
+@{
+    ViewData["Title"] = "PostDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pb-3">
+    <div class="blog-item">
+        <div class="position-relative">
+            <img class="img-fluid w-100" src="~/Image/@Model.PlaceImage" alt="">
+            <div class="blog-date">
+                <h6 class="font-weight-bold mb-n1"></h6>
+                <small class="text-white text-uppercase"></small>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white mb-3" style="padding: 30px;">
+        <div class="d-flex mb-3">
+           
+            <a class="text-primary text-uppercase text-decoration-none">Tours & Travel</a>
+        </div>
+        <h2 class="mb-3">@Model.PlaceName</h2>
+        <p>
+            @Model.PlaceContent1
+        </p>
+
+        <h4 class="mb-3">@Model.PlaceHeading1</h4>
+        <img class="img-fluid w-50 float-left mr-4 mb-2" src="~/Image/@Model.PlaceImage">
+        <p>
+            @Model.PlaceContent2
+        </p>
+        <h5 class="mb-3">@Model.PlaceHeading2</h5>
+
+        <p>
+            @Model.PlaceContent3
+        </p>
+    </div>
+</div>

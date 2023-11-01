@@ -1,0 +1,120 @@
+﻿@model List<Roamer.ViewModels.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "UserRole";
+    Layout = "_LayoutDashboard";
+
+}
+
+<div class="row">
+
+    <div class="col-md-2">
+        <div class="sidebar content-box" style="display: block;">
+            <ul class="nav">
+
+                <li class="current"><a asp-action="Index" asp-controller="Home"><i class="glyphicon glyphicon-home"></i> Main Page</a></li>
+                <li><a asp-action="PlaceDashboard" asp-controller="Account"><i class="glyphicon glyphicon-folder-open"></i> Places</a></li>
+                <li><a asp-action="RolesList" asp-controller="Account"><i class="glyphicon glyphicon-star"></i> Roles</a></li>
+                <li><a asp-action="CreateGuide" asp-controller="Service"><i class="glyphicon glyphicon-user"></i> Guides</a></li>
+                <li><a asp-action="CreatePost" asp-controller="Service"><i class="glyphicon glyphicon-pencil"></i> Posts</a></li>
+
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4 ">
+        <form method="post" asp-action="UserRole">
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        Users in this role 
+                    </th>
+                </tr>
+
+              
+
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <tr>
+                        <td>
+
+                            <input type="hidden" asp-for="@Model[i].UserId" />
+                            <input type="hidden" asp-for="@Model[i].UserName" />
+
+                            <input asp-for="@Model[i].IsSelected" />
+                            <label> @Model[i].UserName</label>
+
+                        </td>
+                        </tr>
+                    
+                       
+                    }
+        
+
+                <tr>
+                    <td>
+                        <input type="submit" value="Update" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+          
+
+
+
+        </form>
+      
+    </div>
+
+</div>
+
+@*<div class="card">
+
+    <div class="card-header">
+
+        Users in this role
+    </div>
+    <div class="card-body">
+
+        <form method="post" asp-action="UserRole">
+
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    Users in this role
+                </div>
+                <div class="card-body">
+
+                    @for (int i = 0; i < Model.Count; i++)
+                    {
+                        <div>
+                            <input type="hidden" asp-for="@Model[i].UserId" />
+                            <input type="hidden" asp-for="@Model[i].UserName" />
+
+                            <input asp-for="@Model[i].IsSelected" />
+                            <label> @Model[i].UserName</label>
+                        </div>
+                    }
+
+                </div>
+                <div class="card-footer">
+                    <input type="submit" value="Update" class="btn btn-primary" />
+                </div>
+
+
+
+            </div>
+
+
+
+        </form>
+
+    </div>
+    <div class="card-footer">
+        <input type="submit" value="Update" class="btn btn-primary" />
+    </div>
+
+
+
+</div>*@

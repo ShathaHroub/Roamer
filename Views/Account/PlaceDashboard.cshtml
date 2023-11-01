@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Place>
+@{
+    ViewData["Title"] = "PlaceDashboard";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+
+<div class="container">
+    
+    
+<div class="row">
+        <div class="col-md-2">
+            <div class="sidebar content-box" style="display: block;">
+                <ul class="nav">
+                    <li class="current"><a asp-action="Index" asp-controller="Home"><i class="glyphicon glyphicon-home"></i> Main Page</a></li>
+                    <li><a asp-action="PlaceDashboard" asp-controller="Account"><i class="glyphicon glyphicon-folder-open"></i> Places</a></li>
+                    <li><a asp-action="RolesList" asp-controller="Account"><i class="glyphicon glyphicon-star"></i> Roles</a></li>
+                    <li><a asp-action="CreateGuide" asp-controller="Service"><i class="glyphicon glyphicon-user"></i> Guides</a></li>
+                    <li><a asp-action="CreatePost" asp-controller="Service"><i class="glyphicon glyphicon-pencil"></i> Posts</a></li>
+                  
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <a asp-action="CreatePlace" asp-controller="Service" class="btn btn-success"> Create new place</a>
+            <table class="table table-bordered">
+
+                <tr>
+                    <th>
+                        Place Name
+                    </th>
+                    <th>
+                        Image
+                    </th>
+                    <th>
+                        Edit or Delete
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.PlaceName
+                        </td>
+
+                        <td>
+                            <img src="~/Image/@item.PlaceImage" height="100" width="100">
+                         
+                        </td>
+                         <td>
+                        <a asp-action="EditPlace" asp-controller="Service" asp-route-id="@item.PlaceId" class="btn btn-primary"> Edit</a>
+                            <a asp-action="DeletePlace" asp-controller="Service" asp-route-id="@item.PlaceId" class="btn btn-danger"> Delete</a>
+                            
+                    </td>
+                    </tr>
+                }
+
+               
+
+            </table>
+        </div>
+  
+
+</div>
+
+
+
+</div>

@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityRole>
+@{
+    ViewData["Title"] = "RolesList";
+    Layout = "_LayoutDashboard";
+}
+
+
+
+<div class="page-content">
+	<div class="row">
+		<div class="col-md-2">
+			<div class="sidebar content-box" style="display: block;">
+				<ul class="nav">
+
+					<li class="current"><a asp-action="Index" asp-controller="Home"><i class="glyphicon glyphicon-home"></i> Main Page</a></li>
+					<li><a asp-action="PlaceDashboard" asp-controller="Account"><i class="glyphicon glyphicon-folder-open"></i> Places</a></li>
+					<li><a asp-action="RolesList" asp-controller="Account"><i class="glyphicon glyphicon-star"></i> Roles</a></li>
+					<li><a asp-action="CreateGuide" asp-controller="Service"><i class="glyphicon glyphicon-user"></i> Guides</a></li>
+					<li><a asp-action="CreatePost" asp-controller="Service"><i class="glyphicon glyphicon-pencil"></i> Posts</a></li>>
+
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-4">
+		<a asp-action="CreateRole" class="btn btn-primary"> Add new Role </a>
+		<hr />
+		<table class="table table-bordered">
+
+			<tr>
+				<th>
+					Role Id
+				</th>
+
+				<th>
+					Role Name
+				</th>
+
+				<th>
+					Operations
+				</th>
+
+			</tr>
+			@foreach (var item in Model)
+				{
+					<tr>
+						<td>
+							@item.Id
+						</td>
+						<td>
+							@item.Name
+						</td>
+						<td>
+							<a asp-action="EditRole" asp-route-id="@item.Id" class="btn btn-warning"> Edit Role </a>
+			
+							<a asp-action="DeleteRole" asp-route-id="@item.Id" class="btn btn-danger"> Delete Role </a>
+						</td>
+					</tr>
+				}
+			
+
+
+
+
+		</table>
+	
+		@*<div class="col-md-10">
+		<div class="row">
+		<div class="col-md-12 panel-warning">
+		<div class="content-box-header panel-heading">
+		<div class="panel-title ">New vs Returning Visitors</div>
+
+		<div class="panel-options">
+		<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+		</div>
+		</div>
+		<div class="content-box-large box-with-header">
+		Pellentesque luctus quam quis consequat vulputate. Sed sit amet diam ipsum. Praesent in pellentesque diam, sit amet dignissim erat. Aliquam erat volutpat. Aenean laoreet metus leo, laoreet feugiat enim suscipit quis. Praesent mauris mauris, ornare vitae tincidunt sed, hendrerit eget augue. Nam nec vestibulum nisi, eu dignissim nulla.
+		<br /><br />
+		</div>
+		</div>
+		<div class="col-md-12 panel-warning">
+		<div class="content-box-header panel-heading">
+		<div class="panel-title ">New vs Returning Visitors</div>
+
+		<div class="panel-options">
+		<a href="#" data-rel="collapse"><i class="glyphicon glyphicon-refresh"></i></a>
+		<a href="#" data-rel="reload"><i class="glyphicon glyphicon-cog"></i></a>
+		</div>
+		</div>
+		<div class="content-box-large box-with-header">
+		Pellentesque luctus quam quis consequat vulputate. Sed sit amet diam ipsum. Praesent in pellentesque diam, sit amet dignissim erat. Aliquam erat volutpat. Aenean laoreet metus leo, laoreet feugiat enim suscipit quis. Praesent mauris mauris, ornare vitae tincidunt sed, hendrerit eget augue. Nam nec vestibulum nisi, eu dignissim nulla.
+		<br /><br />
+		</div>
+		</div>
+		</div>
+
+		</div>*@
+		</div>
+	</div>
+</div>
+

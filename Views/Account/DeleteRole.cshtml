@@ -1,0 +1,42 @@
+﻿@model Microsoft.AspNetCore.Identity.IdentityRole
+@{
+    ViewData["Title"] = "DeleteRole";
+    Layout = "_LayoutDashboard";
+}
+
+
+
+
+
+<div class="row">
+    <div class="col-md-2">
+        <div class="sidebar content-box" style="display: block;">
+            <ul class="nav">
+
+                <li class="current"><a asp-action="Index" asp-controller="Home"><i class="glyphicon glyphicon-home"></i> Main Page</a></li>
+                <li><a asp-action="PlaceDashboard" asp-controller="Account"><i class="glyphicon glyphicon-folder-open"></i> Places</a></li>
+                <li><a asp-action="RolesList" asp-controller="Account"><i class="glyphicon glyphicon-star"></i> Roles</a></li>
+                <li><a asp-action="CreateGuide" asp-controller="Service"><i class="glyphicon glyphicon-user"></i> Guides</a></li>
+                <li><a asp-action="CreatePost" asp-controller="Service"><i class="glyphicon glyphicon-pencil"></i> Posts</a></li>
+
+            </ul>
+        </div>
+    </div>
+	<div class="col-md-4"> 
+
+		<h1>Are you sure to delete <span class="label-danger">  @Model.Name ? </span> </h1>
+
+		<form method="post" asp-action="DeleteRole">
+
+			@Html.HiddenFor(x => x.Id)
+			<input type="submit" value="Delete" class="btn btn-danger" />
+			<a asp-action="RolesList" class="btn btn-primary"> Cancel </a>
+		</form>
+
+	</div>
+
+
+
+</div>
+
+

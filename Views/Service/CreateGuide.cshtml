@@ -1,0 +1,49 @@
+﻿@model Roamer.ViewModels.GuideViewModel
+
+@{
+    ViewData["Title"] = "CreateGuide";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
+}
+
+
+
+<hr />
+<div class="row">
+  
+
+    <div class="col-md-2">
+        <div class="sidebar content-box" style="display: block;">
+            <ul class="nav">
+                <li class="current"><a asp-action="Index" asp-controller="Home"><i class="glyphicon glyphicon-home"></i> Main Page</a></li>
+                <li><a asp-action="PlaceDashboard" asp-controller="Account"><i class="glyphicon glyphicon-folder-open"></i> Places</a></li>
+                <li><a asp-action="RolesList" asp-controller="Account"><i class="glyphicon glyphicon-star"></i> Roles</a></li>
+                <li><a asp-action="CreateGuide" asp-controller="Service"><i class="glyphicon glyphicon-user"></i> Guides</a></li>
+                <li><a asp-action="CreatePost" asp-controller="Service"><i class="glyphicon glyphicon-pencil"></i> Posts</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <form asp-action="CreateGuide" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="GuideName" class="control-label"></label>
+                <input asp-for="GuideName" class="form-control" />
+                <span asp-validation-for="GuideName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuideDescription" class="control-label"></label>
+                <input asp-for="GuideDescription" class="form-control" />
+                <span asp-validation-for="GuideDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuideUrl" class="control-label"></label>
+                <input asp-for="GuideUrl" type="file" id="file" class="form-control" />
+                <span asp-validation-for="GuideUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="CreateGuide" class="btn btn-primary" />
+                <a asp-action="Guides" class="btn btn-info">Back to Guides List</a>
+            </div>
+        </form>
+    </div>
+</div>

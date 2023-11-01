@@ -1,0 +1,193 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> _signInManager
+@inject UserManager<IdentityUser> _userManager
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Roamer -  Travel Website </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="~/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid bg-light pt-3 d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 text-center text-lg-center mb-2 mb-lg-0 ">
+                  
+                </div>
+                <div class="col-lg-6 text-center text-lg-right">
+                    <div class="d-inline-flex align-items-center">
+                        @if (_signInManager.IsSignedIn(User))
+                        {
+                            <a class="text-capitalize mr-4" asp-controller="Account" asp-action="Logout">Logout </a>
+                        } else
+                        {
+                            <a class="text-capitalize mr-4" asp-controller="Account" asp-action="Login">Login</a>
+                            <a class="text-capitalize mr-4" asp-controller="Account" asp-action="Register">Register</a>
+
+                        }
+                       
+                        
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    <div class="container-fluid position-relative nav-bar p-0">
+        <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
+                <a class="navbar-brand" asp-action="Index" asp-controller="Home">
+                    <h1 class="m-0 text-primary"><span class="text-dark">ROAM</span>ER</h1>
+                </a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
+                    <div class="navbar-nav ml-auto py-0">
+                        @if (_signInManager.IsSignedIn(User))
+                        {
+                            <a class="nav-item nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-item nav-link" asp-controller="Home" asp-action="About">About</a>
+                            <a class="nav-item nav-link" asp-controller="Service" asp-action="Guides">Guides</a>
+                            <a class="nav-item nav-link" asp-controller="Service" asp-action="ChatRoom">Chat Room</a>
+                            <a class="nav-item nav-link" asp-controller="Service" asp-action="Place"> Places </a>
+                            <a class="nav-item nav-link" asp-controller="Service" asp-action="Posts">Posts</a>
+
+                        } else
+                        {
+                            <a class="nav-item nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-item nav-link" asp-controller="Home" asp-action="About">About</a>
+                            <a class="nav-item nav-link" asp-controller="Service" asp-action="Guides">Guides</a>
+                            <a class="nav-item nav-link" asp-controller="Service" asp-action="Posts">Posts</a>
+                        }
+                     
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a class="nav-item nav-link" asp-controller="Account" asp-action="Dashboard">Dashboard</a>
+                        }
+                       
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- Navbar End -->
+
+
+
+
+
+
+   <div> 
+       @RenderBody();
+   </div>
+
+
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white-50 py-5 px-sm-3 px-lg-5" style="margin-top: 90px;">
+        <div class="row pt-5">
+            <div class="col-lg-3 col-md-6 mb-5">
+                <a href="" class="navbar-brand">
+                    <h1 class="text-primary"><span class="text-white">ROAM</span>ER</h1>
+                </a>
+                <p>Your ultimate source for in-depth insights into countless destinations across the globe as well as your gateway to unforgettable adventures and seamless travel experiences.</p>
+                <h6 class="text-white text-uppercase mt-4 mb-3" style="letter-spacing: 5px;">My Socials</h6>
+                <div class="d-flex justify-content-start">
+                    <a class="btn btn-outline-primary btn-square mr-2" href="https://github.com/ShathaHroub"><i class="fab fa-github"></i></a>
+                 
+                    <a class="btn btn-outline-primary btn-square mr-2" target="_blank" href="https://www.linkedin.com/in/shatha-al-hroub-1275b3252/"><i class="fab fa-linkedin-in"></i></a>
+                   
+                </div>
+            </div>
+       
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Usefull Links</h5>
+                <div class="d-flex flex-column justify-content-start">
+                    <a class="text-white-50 mb-2" asp-action="About" asp-controller="Home"><i class="fa fa-angle-right mr-2"></i>About</a>
+                    <a class="text-white-50 mb-2" asp-action="Guides" asp-controller="Service"><i class="fa fa-angle-right mr-2"></i>Guides</a>
+                    <a class="text-white-50 mb-2" asp-action="Posts" asp-controller="Service"><i class="fa fa-angle-right mr-2"></i>Posts</a>
+                    @if (_signInManager.IsSignedIn(User))
+                    {
+                        <a class="text-white-50 mb-2" asp-action="Place" asp-controller="Service"><i class="fa fa-angle-right mr-2"></i>Places</a>
+
+                        <a class="text-white-50 mb-2" asp-action="ChatRoom" asp-controller="Service"><i class="fa fa-angle-right mr-2"></i>Chat Room</a>
+                    }
+                   
+            
+
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-5">
+                <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Contact Me</h5>
+                <p><i class="fa fa-map-marker-alt mr-2"></i>Amman, Jordan</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>+962 7 9963 0750</p>
+                <p><i class="fa fa-envelope mr-2"></i>shathaalhroub@gmail.com</p>
+             
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style="border-color: rgba(256, 256, 256, .1) !important;">
+        <div class="row">
+            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+                <p class="m-0 text-white-50">Copyright &copy; <a href="#">Domain</a>. All Rights Reserved.</a>
+                </p>
+            </div>
+            <div class="col-lg-6 text-center text-md-right">
+                <p class="m-0 text-white-50">Designed by <a href="https://htmlcodex.com">HTML Codex</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/easing/easing.min.js"></script>
+    <script src="~/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="~/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="~/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="~/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="~/mail/jqBootstrapValidation.min.js"></script>
+    <script src="~/mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="~/js/main.js"></script>
+</body>
+
+</html>

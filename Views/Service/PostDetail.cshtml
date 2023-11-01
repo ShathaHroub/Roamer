@@ -1,0 +1,94 @@
+﻿@model Roamer.Models.Post
+
+@{
+    ViewData["Title"] = "PostDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Blog Detail Start -->
+<div class="pb-3">
+    <div class="blog-item">
+        <div class="position-relative">
+            <img class="img-fluid w-100" src="~/Image/@Model.PostImagePath" alt="">
+            <div class="blog-date">
+                <h6 class="font-weight-bold mb-n1" ></h6>
+                <small class="text-white text-uppercase">@Model.CreatedAt</small>
+            </div>
+        </div>
+    </div>
+    <div class="bg-white mb-3" style="padding: 30px;">
+        <div class="d-flex mb-3">
+          
+            <a class="text-primary text-uppercase text-decoration-none" >Tours & Travel</a>
+        </div>
+        <h2 class="mb-3">@Model.PostTitle</h2>
+        <p>
+          @Model.PostContent
+        </p>
+    
+        <h4 class="mb-3">@Model.PostHeading</h4>
+        <img class="img-fluid w-50 float-left mr-4 mb-2" src="~/Image/@Model.PostImagePath">
+        <p>
+           @Model.PostContent2
+        </p>
+        <h5 class="mb-3">@Model.PostHeading2</h5>
+    
+        <p>
+           @Model.PostContent3
+        </p>
+    </div>
+</div>
+<!-- Blog Detail End -->
+@*<!-- Comment List Start -->
+@if (Model.Comments.Any())
+{
+    @foreach (var item in Model.Comments)
+    {
+        <div class="bg-white" style="padding: 30px; margin-bottom: 30px;">
+            <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">3 Comments</h4>
+            <div class="media mb-4">
+                <img src="~/img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                <div class="media-body">
+                    <h6><a href="">@item.Name</a> <small><i>@item.CreatedAt</i></small></h6>
+                    <p>
+                        @item.Content
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+    }
+
+}else
+{
+     <div class="bg-white" style="padding: 30px; margin-bottom: 30px;"> 
+         <h4 class="text-uppercase mb-4"> No comments in this post  </h4>
+     </div>
+}
+
+<!-- Comment List End -->
+<!-- Comment Form Start -->
+<div class="bg-white mb-3" style="padding: 30px;">
+    <h4 class="text-uppercase mb-4" style="letter-spacing: 5px;">Leave a comment</h4>
+    <form asp-action="CreateComment" method="post">
+        <input type="hidden" name="postId" value="@Model.PostId">
+       
+        <div class="form-group">
+            <label for="Name">Name *</label>
+            <input type="text" id="name" class="form-control" >
+        </div>
+
+        <div class="form-group">
+            <label for="Message">Message *</label>
+            <textarea id="message" cols="30" rows="5" class="form-control"></textarea>
+        </div>
+        <div class="form-group mb-0">
+            <input type="submit" value="Leave a comment"
+                   class="btn btn-primary font-weight-semi-bold py-2 px-3">
+        </div>
+    </form>
+</div>
+<!-- Comment Form End -->*@
